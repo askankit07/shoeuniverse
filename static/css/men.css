@@ -1,0 +1,31 @@
+.men-collection{
+    padding: 2rem 2.6rem;;
+}
+
+.myimg{
+    margin: 20px 0px;
+}
+.myimg img{
+    width: 100%;
+}
+
+.myCard h5{
+    font-size: 14px;
+}
+.myCard p{
+    font-size: 12px;
+}
+
+.myCard button{
+    width: 100%;
+    border: 1px solid #ed1c24;
+    color: #ed1c24;
+    background-color: #fff;
+    font-size: 14px;
+    padding: 10px;
+}
+.myCard button:hover{
+    background-color: #ed1c24;
+    color: #fff;
+    border: none;
+}
