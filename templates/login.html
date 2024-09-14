@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+<div class="login-container">
+    <div class="login">
+        <h3>LOGIN</h3>
+        <form method="post" name="loginForm">
+            {% csrf_token %}
+            <fieldset>
+            <div class="mb-3">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <p>{{error}}</p>
+            <button type="submit" class="btn btn-dark">LOGIN</button>
+            </fieldset>
+        </form>
+    </div>
+    <ul>
+        <li><a href="#">Forget your password?</a></li>
+        <li><a href="{% url 'signup' %}">Create new account</a></li>
+    </ul>  
+</div>
+
+{% endblock %}

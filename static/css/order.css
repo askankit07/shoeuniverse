@@ -1,0 +1,32 @@
+.heading{
+    font-size: 1.1rem;
+}
+
+.order-btn{
+    width: 100%;
+    border: 1px solid #ed1c24;
+    color: #ed1c24;
+    background-color: #fff;
+    font-size: 14px;
+    padding: .8rem;
+    /* width: 100%;
+    padding: .5rem;
+    background-color: black;
+    border: none;
+    border-radius: 1px;
+    color: white */
+}
+.order-btn:hover{
+    background-color: #ed1c24;
+    color: #fff;
+    border: none;
+    
+    /* background-color: white;
+    color: black;
+    border: 1px solid black; */
+}
+
+.form-label{
+    font-size: 1rem;
+}
+

@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Order summary {% endblock %}
+
+<style>
+  @media (min-width: 1025px) {
+    .h-custom {
+      height: 100vh !important;
+    }
+  }
+</style>
+
+{% block body %}
+<section class="h-100 h-custom">
+  <div class="container h-100 py-5 mydiv">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="h5 heading">Shopping Bag</th>
+                  <th scope="col" class="heading">Name</th>
+                  <th scope="col" class="heading">Quantity</th>
+                  <th scope="col" class="heading">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <div class="d-flex align-items-center">
+                      <img src={{product.imageUrl}} class="img-fluid rounded-3" style="width: 120px;" alt="Shoe">
+                      <input type="url" value="{{product.imageUrl}}" name="imageUrl" style="display: none;">
+                      <div class="flex-column ms-4">
+                        <p class="mb-2" style="font-size: 1rem;">{{product.description}}</p>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500; font-size: 1rem;">{{product.name}}</p>
+                    <input type="text" value={{product.id}} name="id" style="display: none;">
+                    <input type="text" value={{product.name}} name="name" style="display: none;">
+                  </td>
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      <input id="qty" min="1" max="10" name="quantity" value="1" type="number"
+                        class="form-control form-control-sm" style="width: 50px;" />
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500;" id="qtyPrice">₹{{product.price}}</p>
+                    <input type="number" value="{{product.price}}" id="price"  style="display: none;"/>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
+            <div class="card-body p-4">
+
+              <div class="row">
+                <div class="col-md-6 col-lg-4 col-xl-3 mb-4 mb-md-0">
+                  <div class="d-flex flex-row pb-3">
+                    <div class="d-flex align-items-center pe-2">
+                      <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1v" value=""
+                        aria-label="..." checked required/>
+                    </div>
+                    <div class="rounded border w-100 p-3">
+                      <p class="d-flex align-items-center mb-0">
+                        <i class="fab fa-cc-mastercard fa-2x text-dark pe-2"></i>Credit
+                        Card
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row pb-3">
+                    <div class="d-flex align-items-center pe-2">
+                      <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2v" value=""
+                        aria-label="..." required/>
+                    </div>
+                    <div class="rounded border w-100 p-3">
+                      <p class="d-flex align-items-center mb-0">
+                        <i class="fab fa-cc-visa fa-2x fa-lg text-dark pe-2"></i>Debit Card
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row">
+                    <div class="d-flex align-items-center pe-2">
+                      <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel3v" value=""
+                        aria-label="..." required/>
+                    </div>
+                    <div class="rounded border w-100 p-3">
+                      <p class="d-flex align-items-center mb-0">
+                        <i class="fab fa-cc-paypal fa-2x fa-lg text-dark pe-2"></i>PayPal
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-6">
+                  <div class="row">
+                    <div class="col-12 col-xl-6">
+                      <div class="form-outline mb-4 mb-xl-5">
+                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                          placeholder="Ankit goswami" required/>
+                        <label class="form-label" for="typeName">Name on card</label>
+                      </div>
+
+                      <div class="form-outline mb-4 mb-xl-5">
+                        <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YY"
+                          size="7" id="exp" minlength="5" maxlength="5" required/>
+                        <label class="form-label" for="typeExp" >Expiration</label>
+                      </div>
+                    </div>
+                    <div class="col-12 col-xl-6">
+                      <div class="form-outline mb-4 mb-xl-5">
+                        <input type="text" class="form-control form-control-lg" siez="17"
+                          placeholder="1111 2222 3333 4444" minlength="16" maxlength="19" required/>
+                        <label class="form-label" for="typeText" >Card Number</label>
+                      </div>
+
+                      <div class="form-outline mb-4 mb-xl-5">
+                        <input type="password" class="form-control form-control-lg" placeholder="&#9679;&#9679;&#9679;"
+                          size="1" minlength="3" maxlength="3" required/>
+                        <label class="form-label" for="typeText">Cvv</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-3">
+                  <div class="d-flex justify-content-between" style="font-weight: 500;">
+                    <p class="mb-2">Subtotal</p>
+                    <p class="mb-2" id="Subtotal">₹{{product.price}}</p>
+                  </div>
+
+                  <div class="d-flex justify-content-between" style="font-weight: 500;">
+                    <p class="mb-0">Shipping</p>
+                    <p class="mb-0">Free</p>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
+                    <p class="mb-2">Total (tax included)</p>
+                    <p class="mb-2" id="totalPrice">₹{{product.price}}</p>
+                  </div>
+
+                  <button type="submit" class="order-btn"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="d-flex justify-content-between">
+                      <span>Checkout</span>
+                      <span id="Checkout">₹{{product.price}}</span>
+                      <input type="number" value="{{product.price}}" name="amount" style="display: none;">
+                    </div>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> {% endcomment %}
+
+<!-- Modal -->
+{% comment %} <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+<script>
+  let qty = document.getElementById('qty')
+  let priceElement = document.getElementById('price')
+
+  price = priceElement.value
+
+  qty.addEventListener('change', function () {
+    let totallprice = document.getElementById('qtyPrice').innerHTML = qty.value * price
+    document.getElementById('Subtotal').innerHTML = totallprice
+    document.getElementById('totalPrice').innerHTML = totallprice
+    document.getElementById('Checkout').innerHTML = totallprice
+  })
+</script>
+{% endblock %}

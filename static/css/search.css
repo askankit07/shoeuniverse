@@ -1,0 +1,35 @@
+.search-card{
+    width: 100%;
+    padding: 0.1rem 2.6rem;
+}
+
+.search-card-img{
+    overflow: hidden;
+}
+.search-card-img img{
+    height: 11rem;
+    object-fit: cover;
+}
+
+.search-body{
+    padding: 1rem 0.5rem;
+    height: 100%;
+}
+
+.search-body p{
+    padding: 0rem;
+    font-size: 1rem;
+}
+
+.search-body button{
+    width: 5rem;
+    border: 1px solid #ed1c24;
+    color: #ed1c24;
+    background-color: #fff;
+    font-size: 14px;
+    padding: 10px;
+}
+.search-body button:hover{
+    background-color: #ed1c24;
+    color: #fff;
+}

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Sign-up
+{% endblock %}
+
+{% block body %}
+  <div class="login-container">
+    <div class="login">
+      <h3>REGISTER</h3>
+      <form method="post" name="signupForm">
+        {% csrf_token %}
+        <fieldset>
+          <div class="mb-3">
+            <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required />
+            <span id="fnameValidate"></span>
+          </div>
+          <div class="mb-3">
+            <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name" required />
+            <span id="lnameValidate"></span>
+          </div>
+          <div class="mb-3">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required />
+            <span id="EmailValidate"></span>
+          </div>
+          <div class="mb-3">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required />
+            <span id="PasswordValidate"></span>
+          </div>
+          <div class="mb-3">
+            <input type="password" id="conform_password" name="conform_password" class="form-control" placeholder="Confirm Password" required />
+            <span id="ConformPasswordValidate"></span>
+          </div>
+          <p>{{ error }}</p>
+          <button type="submit" class="btn btn-dark">CREATE AN ACCOUNT</button>
+        </fieldset>
+      </form>
+    </div>
+    <ul>
+      <li>
+        <a href="#"></a>
+      </li>
+      <li>
+        <a href="{% url 'login' %}">Login into account</a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    function validateForm() {
+      let fname = document.signupForm.fname.value
+      let lname = document.signupForm.lname.value
+      let email = document.signupForm.email.value
+      let password = document.signupForm.password.value
+      let conform_password = document.signupForm.conform_password.value
+    
+      // Add your validation criteria here
+      let fnameRegex = /^[a-zA-Z]+$/
+      let lnameRegex = /^[a-zA-Z]+$/
+      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      let passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()]{8,}$/
+    
+      if (!fnameRegex.test(fname)) {
+        document.getElementById('fnameValidate').innerHTML = 'First Name must be in alphabets'
+        return false
+      } else {
+        document.getElementById('fnameValidate').innerHTML = ''
+      }
+    
+      if (!lnameRegex.test(lname)) {
+        document.getElementById('lnameValidate').innerHTML = 'Last Name must be in alphabets'
+        return false
+      } else {
+        document.getElementById('lnameValidate').innerHTML = ''
+      }
+    
+      if (!emailRegex.test(email)) {
+        document.getElementById('EmailValidate').innerHTML = 'Email is not valid'
+        return false
+      } else {
+        document.getElementById('EmailValidate').innerHTML = ''
+      }
+    
+      if (!passwordRegex.test(password)) {
+        document.getElementById('PasswordValidate').innerHTML = 'Invalid password, minimum length: 8, one uppercase or lowercase, one digit, special characters'
+        return false
+      } else {
+        document.getElementById('PasswordValidate').innerHTML = ''
+      }
+    
+      if (password !== conform_password) {
+        document.getElementById('ConformPasswordValidate').innerHTML = "Confirm password doesn't match"
+        return false
+      } else {
+        document.getElementById('ConformPasswordValidate').innerHTML = ''
+      }
+    
+      return true // Submit the form if all validations pass
+    }
+    
+    document.signupForm.addEventListener('submit', function (event) {
+      if (!validateForm()) {
+        event.preventDefault() // Prevent form submission if validations fail
+      }
+    })
+  </script>
+{% endblock %}

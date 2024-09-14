@@ -1,0 +1,149 @@
+/* login/signup */
+
+.login-container{
+    text-align: center;
+    padding: 0px 120px;
+    margin:120px 0px;
+
+}
+.login-container ul{
+    list-style: none;
+    padding: 0px;
+}
+.login-container li{
+    font-size: 13px;
+    text-decoration: none;
+    margin-top: 5px;
+}
+.login{
+    margin-top: 80px;
+    text-align: center;
+}
+.login span{
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+.login h3{
+    font-size: 26px;
+}
+.login input {
+    padding: 12px;
+    margin-bottom: 5px;
+    background-color: #F2F2F2;
+    border: none;
+    border-radius: 1px;
+    opacity: 0.8;
+}
+
+.login p{
+    color: red;
+    font-size: 15px;
+}
+
+.login button{
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 1px;
+    min-width: 130px;
+}
+.login button:hover{
+    background-color: white;
+    color: black; 
+    border: 1px solid black;
+}
+
+.login-container a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-container a:hover{
+    text-decoration: underline;
+}
+
+
+/* index */
+.slider{
+    padding: 0rem 2.6rem;
+}
+.categories{
+    padding: 1.5rem 2.6rem;
+    cursor:pointer;
+}
+.categories h4{
+    text-align: center;
+    font-size: 30px;
+    margin: 15px 0px;
+}
+
+.tab-buttons{
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px;
+}
+.tab-buttons button{
+    padding: 7px 25px;
+    border: none;
+    color: #ed1c24;
+    background: none;
+    font-size: 16px;
+    border-bottom: 1px solid rgb(169, 169, 169);
+}
+.tab-buttons button:hover{
+    border-bottom: 1px solid #ed1c24;
+}
+
+.card-body h5{
+    font-size: 20px;
+}
+
+.card-body p{
+    font-size: 11px;
+}
+
+.card{
+    overflow: hidden;
+}
+.card img{
+    transition: all ease 1s;
+    cursor:pointer;
+}
+
+.card img:hover{
+    scale: 1.2;
+}
+.card-body .btn{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 1px;
+}
+.btn:hover{
+    background-color: #ed1c24;
+    color: white;
+    border: none;
+}
+
+.new-section{
+    padding: 2rem 2.6rem;
+}
+
+.new-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    flex-direction: row;
+}
+
+.new-content .one,
+.new-content .two{
+    flex-basis: 25%;
+}
+
+.lb{
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+}
+
