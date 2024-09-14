@@ -60,44 +60,44 @@ def men(request):
   
     if 'user' in request.session:
         current_user=request.session['user']
-        response=requests.get('http://127.0.0.1:8000/api/men/')
+        response=requests.get('http://64.227.188.237/api/men/')
         data=response.json()
         return render(request,'men.html',{'data':data,'current_user':current_user})
     else:
-        response=requests.get('http://127.0.0.1:8000/api/men/')
+        response=requests.get('http://64.227.188.237/api/men/')
         data=response.json()
         return render(request,'men.html',{'data':data})
 
 def women(request):
     if 'user' in request.session:
         current_user=request.session['user']
-        response=requests.get('http://127.0.0.1:8000/api/women/')
+        response=requests.get('http://64.227.188.237/api/women/')
         data=response.json()
         return render(request,'women.html',{'data':data,'current_user':current_user})
     else:
-        response=requests.get('http://127.0.0.1:8000/api/women/')
+        response=requests.get('http://64.227.188.237/api/women/')
         data=response.json()
         return render(request,'women.html',{'data':data})
 
 def kids(request):
     if 'user' in request.session:
         current_user=request.session['user']
-        response=requests.get('http://127.0.0.1:8000/api/kids/')
+        response=requests.get('http://64.227.188.237/api/kids/')
         data=response.json()
         return render(request,'kids.html',{'data':data,'current_user':current_user})
     else:
-        response=requests.get('http://127.0.0.1:8000/api/kids/')
+        response=requests.get('http://64.227.188.237/api/kids/')
         data=response.json()
         return render(request,'kids.html',{'data':data})
 
 def newArrivals(request):
     if 'user' in request.session:
         current_user=request.session['user']
-        response=requests.get('http://127.0.0.1:8000/api/newArrivals/')
+        response=requests.get('http://64.227.188.237/api/newArrivals/')
         data=response.json()
         return render(request,'new-arrivals.html',{'data':data,'current_user':current_user})
     else:
-        response=requests.get('http://127.0.0.1:8000/api/newArrivals/')
+        response=requests.get('http://64.227.188.237/api/newArrivals/')
         data=response.json()
         return render(request,'new-arrivals.html',{'data':data})
 
@@ -119,7 +119,7 @@ def orderSummary(request,id,url):
             order=Order(productId=id,productName=name,productQty=qty,totalAmount=(amount*qty),imageUrl=imageUrl,foreignKey=ForeignKey)
             order.save()
             return redirect('index')
-        response=requests.get('http://127.0.0.1:8000/api/'+url+'/'+id)
+        response=requests.get('http://64.227.188.237/api/'+url+'/'+id)
         product=response.json()
         return render(request,'orderSummary.html',{'product':product,'current_user':current_user})
     return redirect('index')
