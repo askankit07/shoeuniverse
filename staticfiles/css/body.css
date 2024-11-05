@@ -1,0 +1,53 @@
+.collection{
+    padding: 0rem 2.6rem;
+}
+
+.myimg{
+    margin: 20px 0px;
+}
+.myimg img{
+    width: 100%;
+    transition: all ease 1s;
+}
+
+
+.myCard{
+    overflow: hidden;
+}
+.myCard img{
+    transition: all ease 1s;
+    cursor:pointer;
+}
+.myCard img:hover{
+    scale: 1.2;
+}
+.myCard h5{
+    font-size: 14px;
+    cursor:pointer;
+    padding-top: 0.5rem;
+}
+.myCard p{
+    font-size: 12px;
+    cursor:pointer;
+}
+
+.cartBtn{
+    display: flex;
+}
+
+.cartBtn a{
+    margin-right: .4rem;
+}
+.cartBtn button{
+    width: 100%;
+    border: 1px solid #ed1c24;
+    color: #ed1c24;
+    background-color: #fff;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.cartBtn button:hover{
+    background-color: #ed1c24;
+    color: #fff;
+}
