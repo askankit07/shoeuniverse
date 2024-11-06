@@ -7,7 +7,7 @@ class BaseProductModel(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=0)
     description = models.TextField()
     image_url = models.URLField()
-
+ 
     class Meta:
         abstract = True  # This makes it an abstract base class
 

@@ -162,6 +162,14 @@ def addToCart(request, id):
         email = request.session['email']
         ForeignKey = Customer.objects.get(email=email)
 
+        # Define the mapping of model names to URL names
+        redirect_mapping = {
+            'KidsModel': 'kids',
+            'WomenModel': 'women',
+            'MenModel': 'men',
+            'NewArrivalModel': 'newArrivals',
+        }
+
         models = [KidsModel, WomenModel, MenModel, NewArrivalModel]
         for model in models:
             item = model.objects.filter(id=id).first()
@@ -171,10 +179,11 @@ def addToCart(request, id):
                     productName=item.name,
                     Amount=item.price,
                     description=item.description,
-                    imageUrl=item.imageUrl,
+                    imageUrl=item.image_url,
                     foreignKey=ForeignKey
                 )
-                return redirect(model.__name__.lower())  # Redirect to the appropriate category page
+                # Redirect to the appropriate category page using the mapping
+                return redirect(redirect_mapping[model.__name__])
 
     return redirect('index')
 
