@@ -1,20 +1,25 @@
 from django.contrib import admin
-
 from .models import *
 
-class MenAdmin(admin.ModelAdmin):
-    search_fields=['id','name']
+class BaseProductAdmin(admin.ModelAdmin):
+    """
+    Base admin class for product models with common configurations.
+    """
+    search_fields = ['id', 'name']
 
-class WomenAdmin(admin.ModelAdmin):
-    search_fields=['id','name']
+# Concrete admin classes inheriting from the base class
+@admin.register(MenModel)
+class MenAdmin(BaseProductAdmin):
+    pass
 
-class KidsAdmin(admin.ModelAdmin):
-    search_fields=['id','name']
+@admin.register(WomenModel)
+class WomenAdmin(BaseProductAdmin):
+    pass
 
-class NewArrivalAdmin(admin.ModelAdmin):
-    search_fields=['id','name']
+@admin.register(KidsModel)
+class KidsAdmin(BaseProductAdmin):
+    pass
 
-admin.site.register(MenModel,MenAdmin)
-admin.site.register(WomenModel,WomenAdmin)
-admin.site.register(KidsModel,KidsAdmin)
-admin.site.register(NewArrivalModel,NewArrivalAdmin)
+@admin.register(NewArrivalModel)
+class NewArrivalAdmin(BaseProductAdmin):
+    pass

@@ -1,22 +1,23 @@
 from rest_framework import serializers
 from .models import *
 
-class MenModelSerializer(serializers.ModelSerializer):
+class BaseProductModelSerializer(serializers.ModelSerializer):
     class Meta:
+        fields = '__all__'  # Common configuration for all product serializers
+
+# Concrete serializers inheriting from the base serializer
+class MenModelSerializer(BaseProductModelSerializer):
+    class Meta(BaseProductModelSerializer.Meta):
         model = MenModel
-        fields = '__all__'
 
-class WomenModelSerializer(serializers.ModelSerializer):
-    class Meta:
+class WomenModelSerializer(BaseProductModelSerializer):
+    class Meta(BaseProductModelSerializer.Meta):
         model = WomenModel
-        fields = '__all__'
 
-class KidsModelSerializer(serializers.ModelSerializer):
-    class Meta:
+class KidsModelSerializer(BaseProductModelSerializer):
+    class Meta(BaseProductModelSerializer.Meta):
         model = KidsModel
-        fields = '__all__'
 
-class NewArrivalModelSerializer(serializers.ModelSerializer):
-    class Meta:
+class NewArrivalModelSerializer(BaseProductModelSerializer):
+    class Meta(BaseProductModelSerializer.Meta):
         model = NewArrivalModel
-        fields = '__all__'
