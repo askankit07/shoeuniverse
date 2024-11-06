@@ -72,7 +72,7 @@ def logout(request):
     return redirect('index')
 
 def men(request):
-    url = 'http://127.0.0.1:8000/api/men/'
+    url = 'https://shoeuniverse.vercel.app/api/men/'
     data = fetch_api_data(url)
     if data is None:
         # Handle the case where data is None (e.g., show an error message)
@@ -81,17 +81,17 @@ def men(request):
 
 
 def women(request):
-    url = 'http://127.0.0.1:8000/api/women/'
+    url = 'https://shoeuniverse.vercel.app/api/women/'
     data = fetch_api_data(url)
     return render_with_user(request, 'women.html', {'data': data})
 
 def kids(request):
-    url = 'http://127.0.0.1:8000/api/kids/'
+    url = 'https://shoeuniverse.vercel.app/api/kids/'
     data = fetch_api_data(url)
     return render_with_user(request, 'kids.html', {'data': data})
 
 def newArrivals(request):
-    url = 'http://127.0.0.1:8000/api/newArrivals/'
+    url = 'https://shoeuniverse.vercel.app/api/newArrivals/'
     data = fetch_api_data(url)
     return render_with_user(request, 'new-arrivals.html', {'data': data})
 
@@ -119,7 +119,7 @@ def orderSummary(request, id, url):
         )
         return redirect('index')
 
-    url = f'http://127.0.0.1:8000/api/{url}/{id}'
+    url = f'https://shoeuniverse.vercel.app/api/{url}/{id}'
     product = fetch_api_data(url)
     return render_with_user(request, 'orderSummary.html', {'product': product})
 
